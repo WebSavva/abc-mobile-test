@@ -1,0 +1,13 @@
+%centered-column {
+    display: grid;
+    grid-template-columns: 1fr 40rem 1fr;
+    & > * {
+        grid-column: 2 / span 1;
+      }
+      @include respondMedia(sm) {
+        grid-template-columns: 100%;
+        & > * {
+          grid-column: 1 / -1;
+        }
+      }
+}

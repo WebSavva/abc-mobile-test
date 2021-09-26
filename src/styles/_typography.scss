@@ -1,0 +1,27 @@
+%large-text {
+  font-size: 2rem;
+}
+
+%medium-text {
+  font-size: 1.6rem;
+}
+
+%small-text {
+  font-size: 1.3rem;
+}
+
+%primary-heading {
+  @extend %large-text;
+  font-weight: 400;
+  color: $primary-font-color;
+  &--highlighted {
+    display: block;
+    text-transform: uppercase;
+  }
+}
+
+%display-heading {
+  text-align: center;
+  font-family: $display-font;
+  @extend %large-text;
+}

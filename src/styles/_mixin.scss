@@ -1,0 +1,79 @@
+@use "sass:map";
+
+@mixin respondMedia($type) {
+  @media only screen and (max-width:#{map.get($breakpoints, $type)}) {
+    @content;
+  }
+}
+
+@mixin verticalCentered($gap) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absCentered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%defaultPseudo {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+%primary-btn {
+  color: #fff;
+  border-radius: 50px;
+  display: block;
+  padding: 2rem 3rem;
+  text-align: center;
+  font-size: 2rem;
+  @include respondMedia(sm) {
+    padding: 1.5rem 2rem;
+  }
+}
+
+%message-box {
+  background: #fff;
+  padding: 2rem 4rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  @include respondMedia(sm){
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+  &::after {
+    @extend %defaultPseudo;
+    width: 1.5rem;
+    height: 2rem;
+    background: inherit;
+    right: 0;
+    left: unset;
+    top: 100%;
+    transform: translate(-100%, -10%);
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    @include respondMedia(sm) {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}
+
+%bordered-box {
+  border: 1px solid #fff;
+}
+
